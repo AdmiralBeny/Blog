@@ -1,0 +1,27 @@
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container-fluid" py-5>
+     <h1 class="display-5 fw-bold">Bem-vindo ao Blog do Trabalhando Enquanto Eles Dormem </h1>
+     <p class="col-md-8 fs-4">Em nosso blog, utilizamos mongodb com express e express-handlebars, além do nodemon.</p>
+    <hr class="my-4">
+     <button class="btn btn-primary btn-lg mt2" type="button">Crie uma conta</button>
+     </div>
+</div>
+
+<hr>
+
+<h2>Postagens recentes: </h2>
+{{#each postagens}}
+<div class="card mt-4">
+    <div class="card-body">
+        <h3>{{titulo}}</h3>
+        <p>{{descricao}}</p>
+        <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia mais</button></a>
+        <hr>
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data de publicação: {{data}}</small>
+    </div>
+</div>
+
+{{else}}
+    <h5>Nenhuma postagem</h5>
+{{/each}}
