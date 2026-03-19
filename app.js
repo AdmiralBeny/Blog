@@ -20,7 +20,7 @@
 // Configurações
     // Sessão
         app.use(session({
-        secret: "cursodenode",
+        secret: process.env.SESSION_SECRET || "cursodenode",
         resave: true,
         saveUninitialized: true
         }))
@@ -83,7 +83,7 @@
         Categoria.find().lean().then((categorias) => {
             res.render("categorias/index", {categorias: categorias})
         }).catch((err) => {
-            req.flash("errpr_msg", "Houve um erro interno ao listar as categorias")
+            req.flash("error_msg", "Houve um erro interno ao listar as categorias")
             res.redirect("/")
         })
     })
@@ -116,7 +116,7 @@
     app.use("/usuarios", usuarios)
 
 //Outros
-const PORT = 8089
+const PORT = process.env.PORT || 8089
 app.listen(PORT, ()=> {
-    console.log('Servidor rodando!')
+    console.log(`Servidor rodando na porta {PORT}!`)
 })
