@@ -1,4 +1,11 @@
 {
+  "name": "blogapp",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "connect-flash": "^0.1.1",
