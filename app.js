@@ -42,6 +42,9 @@
         app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
         app.set('view engine', 'handlebars')
     // Mongoose
+        if (!process.env.DB_URI) {
+            console.log("ERRO: DB_URI não definida!");
+        } else {
         mongoose.connect(process.env.DB_URI)
         .then(() => {
           console.log('Conectado ao MongoDB');
@@ -117,6 +120,9 @@
 
 //Outros
 const PORT = process.env.PORT || 8089
+process.on('unhandledRejection', (reason, promise) => {
+    console.log('Erro não tratado:', reason);
+});
 app.listen(PORT, ()=> {
     console.log(`Servidor rodando na porta ${PORT}!`)
 })
